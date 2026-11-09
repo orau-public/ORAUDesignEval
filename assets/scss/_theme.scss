@@ -1,0 +1,313 @@
+// Add styles for visited links
+
+// Bootstrap has no :visited styling, so links of all states look alike by default
+$link-visited-color: $purple !default;
+
+:root {
+  --bs-link-visited-color: #{$link-visited-color};
+  --bs-link-visited-color-rgb: #{to-rgb($link-visited-color)};
+  --bs-link-visited-hover-color: #{shade-color($link-visited-color, $link-shade-percentage)};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-link-visited-color: #{tint-color($link-visited-color, 40%)};
+    --bs-link-visited-color-rgb: #{to-rgb(tint-color($link-visited-color, 40%))};
+    --bs-link-visited-hover-color: #{tint-color($link-visited-color, 60%)};
+  }
+}
+
+a:visited:not(.btn):not(.page-link):not(.dropdown-item):not(.list-group-item):not(.navbar-brand):not(.navbar-nav .nav-link):not(.nav-tabs .nav-link):not(.nav-pills .nav-link) {
+  --bs-nav-link-color: var(--bs-link-visited-color);
+  color: var(--bs-link-visited-color);
+
+  &:hover,
+  &:focus {
+    --bs-nav-link-hover-color: var(--bs-link-visited-hover-color);
+    color: var(--bs-link-visited-hover-color);
+  }
+}
+
+// ===========================================================================
+// Lightweight theme
+// ---------------------------------------------------------------------------
+// Extends the stock Bootstrap look with a quieter, more editorial feel.
+// Scoped to shared page furniture only — the per-exercise hooks (`#element`,
+// `.element`) are deliberately left untouched so candidate work is unaffected.
+// ===========================================================================
+
+// Theme tokens ---------------------------------------------------------------
+
+$theme-accent: $indigo !default;
+$theme-rule-width: 3px !default;
+
+:root {
+  --ui-accent: #{$theme-accent};
+  --ui-surface: #{$white};
+  --ui-surface-muted: #{$gray-100};
+  --ui-rule: #{$gray-150};
+  --ui-ink-muted: #{$gray-600};
+  --ui-input-border: #{tint-color($theme-accent, 60%)};
+  //--ui-page-bg: #{mix($white, $gray-100, 35%)};
+  --ui-page-bg: $white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ui-accent: #{tint-color($theme-accent, 35%)};
+    --ui-surface: #{$gray-900};
+    --ui-surface-muted: #{mix($gray-900, $black, 70%)};
+    --ui-rule: #{$gray-700};
+    --ui-ink-muted: #{$gray-500};
+    --ui-input-border: #{shade-color(tint-color($theme-accent, 35%), 35%)};
+    //--ui-page-bg: #{mix($gray-900, $black, 85%)};
+    --ui-page-bg: #{mix($gray-900, $black, 85%)};
+  }
+}
+
+// Page canvas ----------------------------------------------------------------
+
+body {
+  background-color: var(--ui-page-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+body > .container {
+  max-width: 66rem;
+  padding-block: $spacer * 2.5;
+}
+
+// Typography -----------------------------------------------------------------
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1,
+.h1 {
+  margin-bottom: $spacer * 1.5;
+  padding-bottom: $spacer * 0.5;
+  border-bottom: 1px solid var(--ui-rule);
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem);
+  font-weight: $font-weight-semibold;
+}
+
+h2,
+.h2 {
+  margin-top: $spacer * 2;
+  font-size: 1.5rem;
+  font-weight: $font-weight-semibold;
+}
+
+h3,
+.h3 {
+  margin-top: $spacer * 1.5;
+  font-size: 1.2rem;
+  font-weight: $font-weight-semibold;
+  color: var(--ui-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+p,
+li {
+  line-height: 1.65;
+}
+
+.lead {
+  font-size: 1.1rem;
+  font-weight: $font-weight-normal;
+  color: var(--ui-ink-muted);
+}
+
+code:not(pre code) {
+  padding: 0.15em 0.4em;
+  border-radius: $border-radius-sm;
+  background-color: var(--ui-surface-muted);
+  border: 1px solid var(--ui-rule);
+  font-size: 0.875em;
+}
+
+hr {
+  margin-block: $spacer * 2;
+  border: 0;
+  border-top: 1px solid var(--ui-rule);
+  opacity: 1;
+}
+
+// Breadcrumbs ----------------------------------------------------------------
+
+.breadcrumb {
+  --bs-breadcrumb-divider: "›";
+  --bs-breadcrumb-divider-color: var(--ui-rule);
+  --bs-breadcrumb-item-padding-x: #{$spacer * 0.5};
+  --bs-breadcrumb-margin-bottom: #{$spacer * 1.5};
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.breadcrumb-item {
+  a {
+    color: var(--ui-ink-muted);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--ui-accent);
+      text-decoration: underline;
+    }
+  }
+
+  &.active {
+    color: var(--bs-emphasis-color);
+    font-weight: $font-weight-medium;
+  }
+}
+
+// Page instructions ----------------------------------------------------------
+// Markup hook: <div class="instructions"> wrapping the exercise brief.
+
+.instructions {
+  margin-bottom: $spacer * 2;
+  padding: $spacer * 1.25 $spacer * 1.5;
+  border-inline-start: $theme-rule-width solid var(--ui-accent);
+  background-color: var(--ui-surface-muted);
+  color: var(--bs-body-color);
+
+  > * {
+    max-width: none;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  p > strong:only-child {
+    display: inline-block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ui-accent);
+  }
+
+  ul,
+  ol {
+    padding-inline-start: 0;
+
+    > li {
+      // Marker sits on the text edge; wrapped lines hang to match
+      list-style-position: inside;
+      padding-inline-start: 1.25rem;
+      text-indent: -1.25rem;
+    }
+
+    > li + li {
+      margin-top: $spacer * 0.35;
+    }
+  }
+}
+
+// User exercise elements -----------------------------------------------------
+// The area below the rule is where candidates work; give it a clear, neutral
+// canvas without imposing styles on the elements they are asked to build.
+
+hr + *,
+.work-area {
+  position: relative;
+}
+
+.work-area {
+  padding: $spacer * 1.75;
+  border: 1px dashed var(--ui-rule);
+  border-radius: $border-radius-lg;
+  background-color: var(--ui-surface);
+}
+
+form {
+  label {
+    font-weight: $font-weight-medium;
+  }
+
+  .btn + .btn {
+    margin-left: $spacer * 0.5;
+  }
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+  border-color: var(--ui-input-border);
+
+  &:focus {
+    border-color: var(--ui-accent);
+  }
+}
+
+// Navigation -----------------------------------------------------------------
+
+.nav.flex-column {
+  --bs-nav-link-padding-y: #{$spacer * 0.6};
+  --bs-nav-link-padding-x: #{$spacer * 0.9};
+  max-width: 24rem;
+  margin-bottom: $spacer * 1.5;
+  border: 1px solid var(--ui-rule);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  background-color: var(--ui-surface);
+
+  .nav-item + .nav-item {
+    border-top: 1px solid var(--ui-rule);
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--bs-body-color);
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease-in-out,
+      color 0.15s ease-in-out;
+
+    &::after {
+      content: "→";
+      color: var(--ui-rule);
+      transition:
+        transform 0.15s ease-in-out,
+        color 0.15s ease-in-out;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--ui-surface-muted);
+      color: var(--ui-accent);
+
+      &::after {
+        color: var(--ui-accent);
+        transform: translateX(0.2rem);
+      }
+    }
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+}
+
+// utilities
+.hide-it {
+  display: none;
+}

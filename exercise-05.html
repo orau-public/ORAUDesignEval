@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5 &mdash; UI/UX Designer Interview Exercises</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Exercises</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Exercise 5</li>
+            </ol>
+        </nav>
+
+        <h1>Exercise 5 - JavaScript/jQuery</h1>
+        <div class="instructions">
+            <ul>
+                <li>Add JavaScript to this file to display the hidden input when the "Yes" radio button is selected.
+                </li>
+                <li>Hide the input and clear its value when the "No" radio button is selected.</li>
+                <li>Add your JavaScript directly to this file.</li>
+            </ul>
+        </div>
+        <!-- Candidate work area -->
+
+        <div class="mb-3" id="response">
+            <p>Please select a response.</p>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="rb-1" value="Yes">
+                <label class="form-check-label">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="rb-1" value="No">
+                <label class="form-check-label">No</label>
+            </div>
+        </div>
+        <div class="mb-3 hide-it" id="explanation">
+            <label>Explanation</label>
+            <input type="text" class="form-control">
+        </div>
+
+    </div>
+
+    <script src="assets/js/vendor/jquery.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    <script>
+        // Add JavaScript here...
+    </script>
+</body>
+
+</html>

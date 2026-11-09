@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Designer Interview Exercises</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <header class="mb-4">
+            <h1>UI/UX Developer Interview Exercises</h1>
+            <p class="lead">A lightweight, static coding environment for evaluating UI/UX developer candidates. Each
+                exercise is a plain HTML page you edit directly — no framework, no
+                bundler, no build step for the markup.</p>
+        </header>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <section class="mb-5">
+                    <h2 class="h4">Exercises</h2>
+                    <ul class="nav flex-column border-0">
+                        <li class="nav-item"><a href="exercise-01.html" class="nav-link">Exercise 1 - Form Layout</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-02.html" class="nav-link">Exercise 2 - Accessibility</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-03.html" class="nav-link">Exercise 3 - SASS Debugging</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-04.html" class="nav-link">Exercise 4 - Styling
+                                Components</a></li>
+                        <li class="nav-item"><a href="exercise-05.html" class="nav-link">Exercise 5 -
+                                JavaScript/jQuery</a></li>
+                        <li class="nav-item"><a href="exercise-06.html" class="nav-link">Exercise 6</a></li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4">Setup</h2>
+                    <p>You need <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> 18 or newer, a
+                        modern browser, and a code editor.</p>
+                    <pre class="bg-body-tertiary p-3 rounded"><code>git clone &lt;repository-url&gt;
+cd ui-interviews
+npm install
+npm start</code></pre>
+                    <p><code>npm install</code> pulls Bootstrap, Popper, jQuery, Dart Sass, and Browsersync into
+                        <code>node_modules</code>. <code>npm start</code> compiles the CSS, starts the Sass watcher,
+                        and serves the site at <a href="http://localhost:3000">http://localhost:3000</a>. Stop it with
+                        <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+                    </p>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4">Scripts</h2>
+                    <div class="table-responsive">
+                        <table class="table table-sm align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Script</th>
+                                    <th scope="col">Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>npm start</code></td>
+                                    <td>The normal way to work. Compiles CSS once, then runs the Sass watcher and the
+                                        dev server together.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>npm run serve</code></td>
+                                    <td>Dev server only (Browsersync) on port 3000, control UI on port 3001.
+                                        Live-reloads on HTML, CSS, or JS changes.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>npm run css</code></td>
+                                    <td>One-off compile of <code>assets/scss/styles.scss</code> into
+                                        <code>assets/css/styles.css</code> with a source map.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>npm run css:watch</code></td>
+                                    <td>Same compile, re-run automatically whenever a <code>.scss</code> file changes.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>npm run build</code></td>
+                                    <td>Alias for <code>npm run css</code>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4">Project structure</h2>
+                    <pre class="bg-body-tertiary p-3 rounded"><code>index.html              Landing page linking to each exercise
+exercise-01..06.html    Exercise pages (same asset references as the index)
+assets/
+  css/
+    styles.css          Compiled output — do not edit by hand
+  js/
+    vendor/             jquery.min.js, popper.min.js, bootstrap.min.js
+  scss/
+    styles.scss         Entry point; imports Bootstrap's source then _custom.scss
+    _variables.scss     Local copy of Bootstrap's variables — edit to theme
+    _variables-dark.scss  Local copy of Bootstrap's dark-mode variables
+    _custom.scss        Project styles and overrides</code></pre>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4">How the pages are wired</h2>
+                    <p>Every page loads the same assets in the same order:</p>
+                    <pre class="bg-body-tertiary p-3 rounded"><code>&lt;link rel="stylesheet" href="assets/css/styles.css"&gt;
+...
+&lt;script src="assets/js/vendor/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="assets/js/vendor/popper.min.js"&gt;&lt;/script&gt;
+&lt;script src="assets/js/vendor/bootstrap.min.js"&gt;&lt;/script&gt;</code></pre>
+                    <p>Order matters: jQuery first, Popper before Bootstrap (dropdowns, tooltips, and popovers depend
+                        on it).
+                        <code>assets/css/styles.css</code> is the full Bootstrap framework compiled from source plus
+                        the project's own styles, so no separate Bootstrap stylesheet is needed.
+                    </p>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4">Styling workflow</h2>
+                    <ul>
+                        <li>Edit <code>assets/scss/_custom.scss</code> for new rules and component overrides.</li>
+                        <li>Edit <code>assets/scss/_variables.scss</code> to change Bootstrap defaults (colors,
+                            spacing, fonts) before the framework compiles.</li>
+                        <li>Never edit <code>assets/css/styles.css</code> — it is regenerated on every build.</li>
+                        <li>Keep <code>npm start</code> running so changes compile and reload automatically.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4">Troubleshooting</h2>
+                    <ul>
+                        <li><strong>Port 3000 already in use</strong> — stop the other process, or run
+                            <code>npx browser-sync start --server --port 3001</code>.
+                        </li>
+                        <li><strong>CSS changes not appearing</strong> — confirm <code>npm run css:watch</code> (or
+                            <code>npm start</code>) is running and check the terminal for Sass errors.
+                        </li>
+                        <li><strong><code>sass</code> or <code>browser-sync</code> not found</strong> — run
+                            <code>npm install</code>.
+                        </li>
+                        <li><strong>Bootstrap components not interactive</strong> — check the browser console; usually
+                            a script tag is missing or out of order.</li>
+                    </ul>
+                </section>
+            </div>
+
+            <aside class="col-lg-4">
+                <div class="card position-sticky" style="top: 1rem;">
+                    <div class="card-body">
+                        <h2 class="h5 card-title">Notes for candidates</h2>
+                        <ul class="mb-0 ps-3">
+                            <li>Work only inside the marked candidate area of the exercise page unless told otherwise.
+                            </li>
+                            <li>Bootstrap 5 and jQuery are already loaded — no CDN links or installs are required.</li>
+                            <li>Reference docs:
+                                <a href="https://getbootstrap.com/docs/5.3/" target="_blank" rel="noopener">Bootstrap
+                                    5</a> and
+                                <a href="https://api.jquery.com/" target="_blank" rel="noopener">jQuery API</a>.
+                            </li>
+                            <li>The browser refreshes automatically when a file is saved; a hard refresh
+                                (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>) clears stale CSS.</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="assets/js/vendor/jquery.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+</body>
+
+</html>
