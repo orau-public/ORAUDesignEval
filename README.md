@@ -1,18 +1,18 @@
-# UI Interviews
+# ORAU Design Eval
 
 A lightweight, static coding environment used to evaluate UI/UX designer candidates on **Bootstrap 5** and **jQuery**. Each exercise is a plain HTML page that the candidate edits directly — no framework, no bundler, no build step for the markup.
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) 18 or newer (includes npm)
+- [Node.js](https://nodejs.org/) 24 LTS or newer (includes npm)
 - A modern browser
 - A code editor (VS Code recommended)
 
 ## Installation
 
 ```bash
-git clone <repository-url>
-cd ui-interviews
+git clone https://github.com/orau-public/ORAUDesignEval.git
+cd ORAUDesignEval
 npm install
 ```
 
@@ -45,7 +45,7 @@ Stop any running script with `Ctrl + C`.
 
 ```
 index.html              Landing page linking to each exercise
-exercise-01..06.html    Exercise pages (same asset references as the index)
+exercise-01..05.html    Exercise pages (same asset references as the index)
 assets/
   css/
     styles.css          Compiled output — do not edit by hand

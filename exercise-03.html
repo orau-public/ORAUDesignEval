@@ -9,30 +9,53 @@
 </head>
 
 <body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Exercises</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Exercise 3</li>
+        </ol>
+    </nav>
     <div class="container py-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Exercises</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Exercise 3</li>
-            </ol>
-        </nav>
 
-        <h1>Exercise 3 - SASS Debugging</h1>
-        <div class="instructions">
-            <p><strong>Instructions</strong></p>
-            <ul>
-                <li>Uncomment this line of code in assets/scss/styles.scss: <code>@import "debug";</code></li>
-                <li>Debug and resolve any issues with compiling SASS into CSS. See README.md for help with compiling
-                    SASS in this repository.</li>
-                <li>The corrected styles will be applied to the placeholder paragraph below.</li>
-            </ul>
+        <div class="row g-5">
+            <aside class="col-lg-3">
+                <nav class="position-sticky" style="top: 1rem;" aria-label="Exercises">
+                    <h2 class="h6 text-uppercase text-body-secondary">Exercises</h2>
+                    <ul class="nav flex-column border-0">
+                        <li class="nav-item"><a href="exercise-01.html" class="nav-link">Exercise 1 - Form Layout</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-02.html" class="nav-link">Exercise 2 - Accessibility</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-03.html" class="nav-link active"
+                                aria-current="page">Exercise 3 - SASS Debugging</a></li>
+                        <li class="nav-item"><a href="exercise-04.html" class="nav-link">Exercise 4 - Styling
+                                Components</a></li>
+                        <li class="nav-item"><a href="exercise-05.html" class="nav-link">Exercise 5 -
+                                JavaScript/jQuery</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="col-lg-9">
+                <h1>Exercise 3 - SASS Debugging</h1>
+                <div class="instructions">
+                    <p><strong>Instructions</strong></p>
+                    <ul>
+                        <li>Uncomment this line of code in assets/scss/styles.scss: <code>@import "debug";</code></li>
+                        <li>Debug and resolve any issues with compiling SASS into CSS. See README.md for help with
+                            compiling SASS in this repository.</li>
+                        <li>The corrected styles will be applied to the placeholder paragraph below.</li>
+                        <li>If you are unable to complete this exercise, restore the comment for the line in the above
+                            SCSS file.</li>
+                    </ul>
+                </div>
+                <p class="element">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ratione? Unde dignissimos distinctio
+                    similique ut asperiores, maiores alias mollitia laboriosam vitae magni eius recusandae qui hic
+                    blanditiis necessitatibus officiis iure?
+                </p>
+            </div>
         </div>
-        <p class="element">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ratione? Unde dignissimos distinctio
-            similique ut asperiores, maiores alias mollitia laboriosam vitae magni eius recusandae qui hic blanditiis
-            necessitatibus officiis iure?
-        </p>
-
     </div>
 
     <script src="assets/js/vendor/jquery.min.js"></script>

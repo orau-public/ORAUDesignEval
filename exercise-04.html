@@ -9,33 +9,55 @@
 </head>
 
 <body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Exercises</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Exercise 4</li>
+        </ol>
+    </nav>
     <div class="container py-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Exercises</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Exercise 4</li>
-            </ol>
-        </nav>
 
-        <h1>Exercise 4 - Styling Components</h1>
-        <div class="instructions">
-            <p><strong>Instructions</strong></p>
-            <ul>
-                <li>The element below is styled with Bootstrap utility classes.</li>
-                <li>Using the element&rsquo;s <code>ID</code> attribute, add styles to
-                    <code>assets/scss/_custom.scss</code> to
-                    apply the same styling, then remove the <code>class</code> attribute and utility classes.</li>
-                <li>Compile the SASS into CSS and verify that the original styling has been replicated.</li>
-            </ul>
+        <div class="row g-5">
+            <aside class="col-lg-3">
+                <nav class="position-sticky" style="top: 1rem;" aria-label="Exercises">
+                    <h2 class="h6 text-uppercase text-body-secondary">Exercises</h2>
+                    <ul class="nav flex-column border-0">
+                        <li class="nav-item"><a href="exercise-01.html" class="nav-link">Exercise 1 - Form Layout</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-02.html" class="nav-link">Exercise 2 - Accessibility</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-03.html" class="nav-link">Exercise 3 - SASS Debugging</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-04.html" class="nav-link active"
+                                aria-current="page">Exercise 4 - Styling Components</a></li>
+                        <li class="nav-item"><a href="exercise-05.html" class="nav-link">Exercise 5 -
+                                JavaScript/jQuery</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="col-lg-9">
+                <h1>Exercise 4 - Styling Components</h1>
+                <div class="instructions">
+                    <p><strong>Instructions</strong></p>
+                    <ul>
+                        <li>The element below is styled with Bootstrap utility classes.</li>
+                        <li>Using the element&rsquo;s <code>ID</code> attribute, add styles to
+                            <code>assets/scss/_custom.scss</code> to
+                            apply the same styling, then remove the <code>class</code> attribute and utility classes.
+                        </li>
+                        <li>Compile the SASS into CSS and verify that the original styling has been replicated.</li>
+                    </ul>
+                </div>
+
+                <!-- Candidate work area -->
+                <div class="mb-3 border border-1 border-primary rounded w-50 mx-auto p-3" id="element">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, unde in eos reprehenderit
+                    nesciunt recusandae earum distinctio voluptates! Voluptatum soluta labore repellendus aliquam nam?
+                    Earum debitis consequatur et soluta facere!
+                </div>
+            </div>
         </div>
-
-        <!-- Candidate work area -->
-        <div class="mb-3 border border-1 border-primary rounded w-50 mx-auto p-3" id="element">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, unde in eos reprehenderit nesciunt
-            recusandae earum distinctio voluptates! Voluptatum soluta labore repellendus aliquam nam? Earum debitis
-            consequatur et soluta facere!
-        </div>
-
     </div>
 
     <script src="assets/js/vendor/jquery.min.js"></script>

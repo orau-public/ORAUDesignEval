@@ -1,9 +1,17 @@
 {
-  "name": "ui-interviews",
+  "name": "orau-design-eval",
   "version": "1.0.0",
   "description": "Repository with exercises for UI Designer candidates.",
   "license": "ISC",
   "author": "ORAU ITS-TS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orau-public/ORAUDesignEval.git"
+  },
+  "homepage": "https://github.com/orau-public/ORAUDesignEval#readme",
+  "bugs": {
+    "url": "https://github.com/orau-public/ORAUDesignEval/issues"
+  },
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
@@ -13,6 +21,9 @@
     "serve": "browser-sync start --server --port 3000 --files \"*.html\" \"assets/css/*.css\" \"assets/js/*.js\" --no-notify --ignore \"node_modules/**\"",
     "start": "npm-run-all build --parallel css:watch serve",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.8",

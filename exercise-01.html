@@ -12,35 +12,59 @@
 </head>
 
 <body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Exercises</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Exercise 1</li>
+        </ol>
+    </nav>
     <div class="container py-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Exercises</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Exercise 1</li>
-            </ol>
-        </nav>
 
-        <h1>Exercise 1 - Form Layout</h1>
-        <div class="instructions">
 
-            <p><strong>Instructions</strong></p>
-            <ul>
-                <li>Reproduce the wireframe linked below as an HTML form. Add your code directly in this file.</li>
-                <li>For this exercise, only design for desktop screen resolutions (i.e., the page doesn&rsquo;t need to
-                    be responsive).</li>
-                <li>Use Bootstrap components and class names to style the form.</li>
-                <li>Use appropriate HTML attributes for inputs that expect a specific type of information (email, dates,
-                    etc.)</li>
-                <li>If you need to add any custom styles, place them in the <code>&lt;style&gt;</code> element in this
-                    file, or in <code>assets/scss/_custom.scss</code>.</li>
-            </ul>
-            <p><a href="assets/docs/exercise-01a.pdf" target="_blank">Example Wireframe</a></p>
+        <div class="row g-5">
+            <aside class="col-lg-3">
+                <nav class="position-sticky" style="top: 1rem;" aria-label="Exercises">
+                    <h2 class="h6 text-uppercase text-body-secondary">Exercises</h2>
+                    <ul class="nav flex-column border-0">
+                        <li class="nav-item"><a href="exercise-01.html" class="nav-link active"
+                                aria-current="page">Exercise 1 - Form Layout</a></li>
+                        <li class="nav-item"><a href="exercise-02.html" class="nav-link">Exercise 2 - Accessibility</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-03.html" class="nav-link">Exercise 3 - SASS Debugging</a>
+                        </li>
+                        <li class="nav-item"><a href="exercise-04.html" class="nav-link">Exercise 4 - Styling
+                                Components</a></li>
+                        <li class="nav-item"><a href="exercise-05.html" class="nav-link">Exercise 5 -
+                                JavaScript/jQuery</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="col-lg-9">
+                <h1>Exercise 1 - Form Layout</h1>
+                <div class="instructions">
+
+                    <p><strong>Instructions</strong></p>
+                    <ul>
+                        <li>Reproduce the wireframe linked below as an HTML form. Add your code directly in this file.
+                        </li>
+                        <li>For this exercise, only design for desktop screen resolutions (i.e., the page doesn&rsquo;t
+                            need to be responsive).</li>
+                        <li>Use Bootstrap components and class names to style the form.</li>
+                        <li>Use appropriate HTML attributes for inputs that expect a specific type of information
+                            (email, dates, etc.)</li>
+                        <li>If you need to add any custom styles, place them in the <code>&lt;style&gt;</code> element
+                            in this file, or in <code>assets/scss/_custom.scss</code>.</li>
+                    </ul>
+                    <p><a href="assets/docs/exercise-01a.pdf" target="_blank">Example Wireframe</a></p>
+                </div>
+
+
+
+                <!-- Candidate work area -->
+
+            </div>
         </div>
-
-
-
-        <!-- Candidate work area -->
-
     </div>
 
     <script src="assets/js/vendor/jquery.min.js"></script>

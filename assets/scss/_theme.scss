@@ -1,33 +1,3 @@
-// Add styles for visited links
-
-// Bootstrap has no :visited styling, so links of all states look alike by default
-$link-visited-color: $purple !default;
-
-:root {
-  --bs-link-visited-color: #{$link-visited-color};
-  --bs-link-visited-color-rgb: #{to-rgb($link-visited-color)};
-  --bs-link-visited-hover-color: #{shade-color($link-visited-color, $link-shade-percentage)};
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bs-link-visited-color: #{tint-color($link-visited-color, 40%)};
-    --bs-link-visited-color-rgb: #{to-rgb(tint-color($link-visited-color, 40%))};
-    --bs-link-visited-hover-color: #{tint-color($link-visited-color, 60%)};
-  }
-}
-
-a:visited:not(.btn):not(.page-link):not(.dropdown-item):not(.list-group-item):not(.navbar-brand):not(.navbar-nav .nav-link):not(.nav-tabs .nav-link):not(.nav-pills .nav-link) {
-  --bs-nav-link-color: var(--bs-link-visited-color);
-  color: var(--bs-link-visited-color);
-
-  &:hover,
-  &:focus {
-    --bs-nav-link-hover-color: var(--bs-link-visited-hover-color);
-    color: var(--bs-link-visited-hover-color);
-  }
-}
-
 // ===========================================================================
 // Lightweight theme
 // ---------------------------------------------------------------------------
@@ -48,8 +18,17 @@ $theme-rule-width: 3px !default;
   --ui-rule: #{$gray-150};
   --ui-ink-muted: #{$gray-600};
   --ui-input-border: #{tint-color($theme-accent, 60%)};
+  --ui-header-bg: #{$theme-accent};
+  --ui-header-ink: #{$white};
+  --ui-header-ink-muted: #{rgba($white, 0.75)};
+  --ui-header-rule: #{rgba($white, 0.35)};
   //--ui-page-bg: #{mix($white, $gray-100, 35%)};
   --ui-page-bg: $white;
+
+  --bs-link-color: #{$theme-accent};
+  --bs-link-color-rgb: #{to-rgb($theme-accent)};
+  --bs-link-hover-color: #{shade-color($theme-accent, $link-shade-percentage)};
+  --bs-link-hover-color-rgb: #{to-rgb(shade-color($theme-accent, $link-shade-percentage))};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,8 +39,17 @@ $theme-rule-width: 3px !default;
     --ui-rule: #{$gray-700};
     --ui-ink-muted: #{$gray-500};
     --ui-input-border: #{shade-color(tint-color($theme-accent, 35%), 35%)};
+    --ui-header-bg: #{shade-color($theme-accent, 55%)};
+    --ui-header-ink: #{tint-color($theme-accent, 90%)};
+    --ui-header-ink-muted: #{tint-color($theme-accent, 60%)};
+    --ui-header-rule: #{rgba(tint-color($theme-accent, 60%), 0.4)};
     //--ui-page-bg: #{mix($gray-900, $black, 85%)};
     --ui-page-bg: #{mix($gray-900, $black, 85%)};
+
+    --bs-link-color: #{tint-color($theme-accent, 35%)};
+    --bs-link-color-rgb: #{to-rgb(tint-color($theme-accent, 35%))};
+    --bs-link-hover-color: #{tint-color($theme-accent, 55%)};
+    --bs-link-hover-color-rgb: #{to-rgb(tint-color($theme-accent, 55%))};
   }
 }
 
@@ -70,11 +58,6 @@ $theme-rule-width: 3px !default;
 body {
   background-color: var(--ui-page-bg);
   -webkit-font-smoothing: antialiased;
-}
-
-body > .container {
-  max-width: 66rem;
-  padding-block: $spacer * 2.5;
 }
 
 // Typography -----------------------------------------------------------------
@@ -142,12 +125,20 @@ hr {
 }
 
 // Breadcrumbs ----------------------------------------------------------------
+// Markup hook: <nav aria-label="breadcrumb"> is treated as a page header bar.
+
+nav[aria-label="breadcrumb"] {
+  padding: $spacer * 0.75 $spacer * 1.25;
+  background-color: var(--ui-header-bg);
+  box-shadow: $box-shadow-sm;
+  margin-block-end: $spacer * 1.5;
+}
 
 .breadcrumb {
   --bs-breadcrumb-divider: "›";
-  --bs-breadcrumb-divider-color: var(--ui-rule);
+  --bs-breadcrumb-divider-color: var(--ui-header-rule);
   --bs-breadcrumb-item-padding-x: #{$spacer * 0.5};
-  --bs-breadcrumb-margin-bottom: #{$spacer * 1.5};
+  --bs-breadcrumb-margin-bottom: 0;
   font-size: $font-size-sm;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -155,19 +146,23 @@ hr {
 
 .breadcrumb-item {
   a {
-    color: var(--ui-ink-muted);
+    color: var(--ui-header-ink-muted);
     text-decoration: none;
 
     &:hover,
     &:focus-visible {
-      color: var(--ui-accent);
+      color: var(--ui-header-ink);
       text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline-color: var(--ui-header-ink);
     }
   }
 
   &.active {
-    color: var(--bs-emphasis-color);
-    font-weight: $font-weight-medium;
+    color: var(--ui-header-ink);
+    font-weight: $font-weight-semibold;
   }
 }
 
@@ -275,14 +270,14 @@ form {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--bs-body-color);
+    color: var(--bs-link-color);
     text-decoration: none;
     transition:
       background-color 0.15s ease-in-out,
       color 0.15s ease-in-out;
 
     &::after {
-      content: "→";
+      //content: "→";
       color: var(--ui-rule);
       transition:
         transform 0.15s ease-in-out,
@@ -292,11 +287,24 @@ form {
     &:hover,
     &:focus-visible {
       background-color: var(--ui-surface-muted);
-      color: var(--ui-accent);
+      color: var(--bs-link-hover-color);
+      text-decoration: underline;
 
       &::after {
         color: var(--ui-accent);
         transform: translateX(0.2rem);
+      }
+    }
+
+    &.active {
+      border-inline-start: $theme-rule-width solid var(--ui-accent);
+      padding-inline-start: calc(var(--bs-nav-link-padding-x) - #{$theme-rule-width});
+      background-color: var(--ui-surface-muted);
+      color: var(--ui-accent);
+      font-weight: $font-weight-semibold;
+
+      &::after {
+        color: var(--ui-accent);
       }
     }
   }
