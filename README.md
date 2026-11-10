@@ -1,6 +1,6 @@
 # ORAU Design Eval
 
-A lightweight, static coding environment used to evaluate UI/UX designer candidates on **Bootstrap 5** and **jQuery**. Each exercise is a plain HTML page that the candidate edits directly — no framework, no bundler, no build step for the markup.
+A lightweight, static coding environment used to evaluate UI/UX developer candidates. Each exercise is a plain HTML page that the candidate edits directly — no framework, no bundler, no build step for the markup.
 
 ## Requirements
 
@@ -37,7 +37,6 @@ Then open <http://localhost:3000>. The index page lists every exercise.
 | `npm run css`       | One-off compile of `assets/scss/styles.scss` into `assets/css/styles.css` with a source map.                            |
 | `npm run css:watch` | Same compile, re-run automatically whenever a `.scss` file changes.                                                     |
 | `npm run build`     | Alias for `npm run css`; the production-style build for this project.                                                   |
-| `npm test`          | Placeholder — there is no test suite.                                                                                   |
 
 Stop any running script with `Ctrl + C`.
 

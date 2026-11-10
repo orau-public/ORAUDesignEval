@@ -45,10 +45,18 @@ cd ORAUDesignEval
 npm install
 npm start</code></pre>
                     <p><code>npm install</code> pulls Bootstrap, Popper, jQuery, Dart Sass, and Browsersync into
-                        <code>node_modules</code>. <code>npm start</code> compiles the CSS, starts the Sass watcher,
-                        and serves the site at <a href="http://localhost:3000">http://localhost:3000</a>. Stop it with
-                        <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+                        <code>node_modules</code>. Run <code>npm run css</code> (or <code>npm start</code>) once
+                        after installing to generate <code>assets/css/styles.css</code>.
                     </p>
+                    <p>If npm prompts about an unapproved install script for <code>@parcel/watcher</code>, it is a
+                        Browsersync dependency and can be approved or ignored; the server works either way.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4">Running the environment</h2>
+                    <pre class="bg-body-tertiary p-3 rounded"><code>npm start</code></pre>
+                    <p>Then open <a href="http://localhost:3000">http://localhost:3000</a>. The index page lists
+                        every exercise. Stop it with <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p>
                 </section>
 
                 <section class="mb-5">
@@ -85,7 +93,8 @@ npm start</code></pre>
                                 </tr>
                                 <tr>
                                     <td><code>npm run build</code></td>
-                                    <td>Alias for <code>npm run css</code>.</td>
+                                    <td>Alias for <code>npm run css</code>; the production-style build for this
+                                        project.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -115,8 +124,8 @@ assets/
 ...
 &lt;script src="assets/js/vendor/jquery.min.js"&gt;&lt;/script&gt;
 &lt;script src="assets/js/vendor/popper.min.js"&gt;&lt;/script&gt;
-&lt;script src="assets/js/vendor/bootstrap.min.js"&gt;&lt;/script&gt;</code></pre>
-                    <p>Order matters: jQuery first, Popper before Bootstrap (dropdowns, tooltips, and popovers depend
+&lt;script src="assets/js/vendor/bootstrap.min.js"&gt;&lt;/script&gt;</code><Bootstrap's dropdowns, tooltips, and
+                        popovers dependOrder matters: jQuery first, Popper before Bootstrap (dropdowns, tooltips, and popovers depend
                         on it).
                         <code>assets/css/styles.css</code> is the full Bootstrap framework compiled from source plus
                         the project's own styles, so no separate Bootstrap stylesheet is needed.
